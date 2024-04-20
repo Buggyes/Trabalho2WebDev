@@ -15,30 +15,31 @@ export class AppComponent implements OnInit{
 
   toggleTheme() {
     const body = document.getElementById("body")!;
+    const currentTheme = localStorage.getItem("theme");
     const lightTheme = "lightTheme";
     const darkTheme = "darkTheme";
   
-    if (body.classList.contains(lightTheme)) {
-      body.classList.remove(lightTheme);
-      body.classList.add(darkTheme);
-  
+    if (currentTheme == "lightTheme") {
+      this.renderer.removeClass(body, lightTheme);
+      this.renderer.addClass(body, darkTheme);
+
       localStorage.setItem("theme", darkTheme);
     } else {
-      body.classList.remove(darkTheme);
-      body.classList.add(lightTheme);
-  
+      this.renderer.removeClass(body, darkTheme);
+      this.renderer.addClass(body, lightTheme);
+
       localStorage.setItem("theme", lightTheme);
     }
   }
   
   ngOnInit(): void {
+    const body = document.getElementById("body")!;
     const theme = localStorage.getItem("theme");
     if (theme) {
-      document.body.classList.add(theme);
+      this.renderer.addClass(body, theme);
     }
     else{
-      let body = document.getElementById("body")!;
-      body.classList.add("darkTheme");
+      this.renderer.addClass(body, "darkTheme");
       localStorage.setItem("theme", "darkTheme");
     }
   }

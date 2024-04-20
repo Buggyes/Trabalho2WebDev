@@ -1,4 +1,4 @@
-<div class = "body" id="body">
+<div id="body">
   <header>
     <img src="../assets/img/logo.png" alt="Logo" class="siteLogo" />
     <button id="homeButton">UniCursos</button>
@@ -12,8 +12,10 @@
       <a href="#addCourseForm">Cadastro de Cursos</a>
       <a href="#courseList">Lista de Cursos</a>
       <a href="#footer">Rodapé</a>
-      <button id="lightTheme">Tema claro</button>
-      <button id="darkTheme" class="darkButton">Tema escuro</button>
+      <button id="lightTheme" (click)="toggleTheme()">Tema claro</button>
+      <button id="darkTheme" class="darkButton" (click)="toggleTheme()">
+        Tema escuro
+      </button>
     </nav>
   </header>
 
