@@ -90,7 +90,7 @@
             </tr>
           </thead>
           <tbody *ngFor="let course of courses; index as i">
-            <tr [attr.data-index]="i">
+            <tr>
               <td>{{ course.name }}</td>
               <td>{{ course.time }}</td>
               <td>{{ course.instructor }}</td>
@@ -98,7 +98,7 @@
               <td>{{ course.education }}</td>
               <td>
                 <button type="button" (click)="editCourse()">Editar</button
-                ><button type="button" (click)="deleteCourse(i)">Deletar</button>
+                ><button type="button" (click)="deleteCourse(course.id)">Deletar</button>
               </td>
             </tr>
           </tbody>

@@ -35,11 +35,13 @@ export class AppComponent implements OnInit {
   editCourse() {}
 
   deleteCourse(id:number) {
+    localStorage.removeItem("id"+id);
     localStorage.removeItem("name"+id);
     localStorage.removeItem("time"+id);
     localStorage.removeItem("instructor"+id);
     localStorage.removeItem("date"+id);
     localStorage.removeItem("education"+id);
+    location.reload();
   }
 
   getAllCourses() {
@@ -49,13 +51,14 @@ export class AppComponent implements OnInit {
         if (localStorage.getItem('name' + i) == null) {
           continue;
         }
+        let id = parseInt(localStorage.getItem('id' + i)!);
         let name = localStorage.getItem('name' + i);
         let time = parseInt(localStorage.getItem('time' + i)!);
         let instructor = localStorage.getItem('instructor' + i);
         let date = localStorage.getItem('date' + i);
         let education = localStorage.getItem('education' + i);
         this.courses.push(
-          new Course(name!, time!, instructor!, date!, education!)
+          new Course(id!, name!, time!, instructor!, date!, education!)
         );
       }
     }
@@ -83,6 +86,10 @@ export class AppComponent implements OnInit {
     } else {
       let courseDate = this.courseForm.value.date!.split('-');
       let newDate = courseDate[2]+"/"+courseDate[1]+"/"+courseDate[0];
+      localStorage.setItem(
+        'id'+this.courseCount,
+        this.courseCount.toString()
+      );
       localStorage.setItem(
         'name' + this.courseCount,
         this.courseForm.value.name!
