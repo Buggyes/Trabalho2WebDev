@@ -1,10 +1,11 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, ReactiveFormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -12,6 +13,18 @@ export class AppComponent implements OnInit{
   title = 'unicursos';
 
   constructor(private renderer:Renderer2){}
+
+  courseForm = new FormGroup({
+    name: new FormControl(''),
+    time: new FormControl(''),
+    instructor: new FormControl(''),
+    date: new FormControl(''),
+    education: new FormControl('')
+  });
+
+  addCourse(){
+    console.log(this.courseForm.value);
+  }
 
   toggleTheme() {
     const body = document.getElementById("body")!;
