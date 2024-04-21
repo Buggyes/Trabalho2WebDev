@@ -194,12 +194,12 @@ button#darkTheme {
 }
 
 .lightTheme .darkRedSection {
-    background-color: #ffcccc;
+    background-color: #ff6666;
     color: #333;
 }
 
 .lightTheme .brightRedSection {
-    background-color: #ff6666;
+    background-color: #ffcccc;
     color: #333;
 }
 
