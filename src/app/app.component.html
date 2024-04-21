@@ -1,7 +1,7 @@
 <div id="body">
   <header>
     <img src="../assets/img/logo.png" alt="Logo" class="siteLogo" />
-    <button id="homeButton">UniCursos</button>
+    <button id="homeButton" (click)="goToHomePage()">UniCursos</button>
     <nav>
       <img
         src="https://icones.pro/wp-content/uploads/2021/02/icone-utilisateur.png"
@@ -27,6 +27,7 @@
       id="addCourseForm"
     >
       <section class="darkRedSection">
+        <h2>Cadastrar Curso:</h2>
         <section class="brightRedSection">
           <label for="CourseName">Nome do curso:</label>
           <input type="text" id="CourseName" formControlName="name" /><br />
@@ -75,9 +76,67 @@
       </section>
     </form>
 
+    <section *ngIf="editing" class="darkRedSection">
+      <h2>Editar curso:</h2>
+      <form
+      [formGroup]="editForm"
+      (ngSubmit)="saveChanges()"
+      class="container"
+      id="editCourseForm"
+    >
+      <section class="darkRedSection">
+        <section class="brightRedSection">
+          <label for="CourseName">Nome do curso:</label>
+          <input type="text" id="CourseName" formControlName="name" /><br />
+
+          <label for="CourseTime">Carga horária (em horas):</label>
+          <input type="number" id="CourseTime" formControlName="time" /><br />
+
+          <label for="CourseInstructor">Nome do instrutor:</label>
+          <input
+            type="text"
+            id="CourseInstructor"
+            formControlName="instructor"
+          /><br />
+
+          <label for="CourseDate">Data de início:</label>
+          <input type="date" id="CourseDate" formControlName="date" /><br />
+        </section>
+
+        <section id="CourseTeaching" class="brightRedSection">
+          <p>Nível de educação do curso:</p>
+          <input
+            type="radio"
+            id="Tecnologo"
+            name="education"
+            formControlName="education"
+            [value]="'Tecnologo'"
+          />Tecnólogo<br />
+          <input
+            type="radio"
+            id="Profissionalizante"
+            name="education"
+            formControlName="education"
+            [value]="'Profissionalizante'"
+          />Profissionalizante<br />
+          <input
+            type="radio"
+            id="EnsinoSuperior"
+            name="education"
+            formControlName="education"
+            [value]="'Ensino Superior'"
+          />Ensino superior<br />
+        </section>
+
+        <button type="submit">Salvar</button>
+        <button type="button" (click)="cancelEditing()">Cancelar</button>
+      </section>
+    </form>
+    </section>
+
     <section class="darkRedSection">
+      <h2>Cursos:</h2>
       <section class="brightRedSection">
-        <p>Cursos:</p>
         <table id="courseList" class="courseTable">
           <thead>
             <tr>
@@ -90,14 +149,14 @@
             </tr>
           </thead>
           <tbody *ngFor="let course of courses; index as i">
-            <tr>
+            <tr [attr.data-index]=course.id>
               <td>{{ course.name }}</td>
               <td>{{ course.time }}</td>
               <td>{{ course.instructor }}</td>
               <td>{{ course.date }}</td>
               <td>{{ course.education }}</td>
               <td>
-                <button type="button" (click)="editCourse()">Editar</button
+                <button type="button" (click)="editCourse(course.id)">Editar</button
                 ><button type="button" (click)="deleteCourse(course.id)">Deletar</button>
               </td>
             </tr>
@@ -108,6 +167,6 @@
   </main>
 
   <footer id="footer">
-    <p>Jaqueline Klegin, Matheus Eduardo dos Santos, João Vinícius Rosá</p>
+    <p>Matheus Eduardo dos Santos</p>
   </footer>
 </div>

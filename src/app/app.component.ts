@@ -1,7 +1,7 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { NgFor, CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { Course } from './models/course-model';
 
 @Component({
@@ -16,9 +16,23 @@ export class AppComponent implements OnInit {
 
   courses: any[] = [];
 
+  editing: boolean;
+  courseEditId: number;
+
   courseCount = 0;
 
-  constructor(private renderer: Renderer2) {}
+  constructor(private renderer: Renderer2, private router: Router) {
+    this.editing = false;
+    this.courseEditId = 0;
+  }
+
+  editForm = new FormGroup({
+    name: new FormControl(''),
+    time: new FormControl(''),
+    instructor: new FormControl(''),
+    date: new FormControl(''),
+    education: new FormControl(''),
+  });
 
   courseForm = new FormGroup({
     name: new FormControl(''),
@@ -28,11 +42,64 @@ export class AppComponent implements OnInit {
     education: new FormControl(''),
   });
 
+  goToHomePage(){
+    this.router.navigate(['/homePage'])
+  }
+
   clearForm(){
     this.courseForm.reset();
   }
 
-  editCourse() {}
+  cancelEditing(){
+    this.editForm.reset();
+    this.editing = false;
+  }
+
+  saveChanges(){
+    let courseDate = this.editForm.value.date!.split('-');
+      let newDate = courseDate[2]+"/"+courseDate[1]+"/"+courseDate[0];
+      localStorage.setItem(
+        'name' + this.courseEditId,
+        this.editForm.value.name!
+      );
+      localStorage.setItem(
+        'time' + this.courseEditId,
+        this.editForm.value.time!
+      );
+      localStorage.setItem(
+        'instructor' + this.courseEditId,
+        this.editForm.value.instructor!
+      );
+      localStorage.setItem(
+        'date' + this.courseEditId,
+        newDate
+      );
+      localStorage.setItem(
+        'education' + this.courseEditId,
+        this.editForm.value.education!
+      );
+
+      location.reload();
+  }
+
+  editCourse(id:number) {
+    this.editing = true;
+    for (let i = 0; i < this.courses.length; i++) {
+      if(id == this.courses[i].id){
+        this.courseEditId = id;
+        let date = this.courses[i].date.split("/");
+        let oldDate = date[2]+"-"+date[1]+"-"+date[0]
+        this.editForm.patchValue({
+          name: this.courses[i].name,
+          time: this.courses[i].time,
+          instructor: this.courses[i].instructor,
+          date: oldDate,
+          education: this.courses[i].education,
+        })
+        break;
+      }
+    }
+  }
 
   deleteCourse(id:number) {
     localStorage.removeItem("id"+id);
