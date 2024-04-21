@@ -12,6 +12,8 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent implements OnInit{
   title = 'unicursos';
 
+  courseCount = 0;
+
   constructor(private renderer:Renderer2){}
 
   courseForm = new FormGroup({
@@ -23,7 +25,33 @@ export class AppComponent implements OnInit{
   });
 
   addCourse(){
-    console.log(this.courseForm.value);
+    this.courseCount++;
+
+    if(this.courseForm.value.name == ''){
+      window.alert("Digite um nome válido!");
+    }
+    else if(this.courseForm.value.time == '' || parseInt(this.courseForm.value.time!) <= 0){
+      window.alert("Digite uma carga horária válida!");
+    }
+    else if(this.courseForm.value.instructor == ''){
+      window.alert("Digite um instrutor válido!");
+    }
+    else if(this.courseForm.value.date == ''){
+      window.alert("Digite uma data válida!");
+    }
+    else if(this.courseForm.value.education == ''){
+      window.alert("Escolha um nível de educação!");
+    }
+    else{
+      localStorage.setItem('name'+this.courseCount, this.courseForm.value.name!);
+      localStorage.setItem('time'+this.courseCount, this.courseForm.value.time!);
+      localStorage.setItem('instructor'+this.courseCount, this.courseForm.value.instructor!);
+      localStorage.setItem('date'+this.courseCount, this.courseForm.value.date!);
+      localStorage.setItem('education'+this.courseCount, this.courseForm.value.education!);
+
+      localStorage.setItem('courseCount',this.courseCount.toString());
+      location.reload();
+    }
   }
 
   toggleTheme() {
@@ -46,6 +74,9 @@ export class AppComponent implements OnInit{
   }
   
   ngOnInit(): void {
+    if(localStorage.getItem('courseCount')){
+      this.courseCount = parseInt(localStorage.getItem('courseCount')!);
+    }
     const body = document.getElementById("body")!;
     const theme = localStorage.getItem("theme");
     if (theme) {
