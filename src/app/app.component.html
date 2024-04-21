@@ -20,20 +20,29 @@
   </header>
 
   <main>
-    <form [formGroup]="courseForm" (ngSubmit)="addCourse()" class="container" id="addCourseForm">
+    <form
+      [formGroup]="courseForm"
+      (ngSubmit)="addCourse()"
+      class="container"
+      id="addCourseForm"
+    >
       <section class="darkRedSection">
         <section class="brightRedSection">
           <label for="CourseName">Nome do curso:</label>
-          <input type="text" id="CourseName" formControlName="name" required /><br />
+          <input type="text" id="CourseName" formControlName="name" /><br />
 
           <label for="CourseTime">Carga horária (em horas):</label>
-          <input type="number" id="CourseTime" formControlName="time" required /><br />
+          <input type="number" id="CourseTime" formControlName="time" /><br />
 
           <label for="CourseInstructor">Nome do instrutor:</label>
-          <input type="text" id="CourseInstructor" formControlName="instructor" required /><br />
+          <input
+            type="text"
+            id="CourseInstructor"
+            formControlName="instructor"
+          /><br />
 
           <label for="CourseDate">Data de início:</label>
-          <input type="date" id="CourseDate" formControlName="date" required /><br />
+          <input type="date" id="CourseDate" formControlName="date" /><br />
         </section>
 
         <section id="CourseTeaching" class="brightRedSection">
@@ -44,7 +53,6 @@
             name="education"
             formControlName="education"
             [value]="'Tecnologo'"
-            required
           />Tecnólogo<br />
           <input
             type="radio"
@@ -52,7 +60,6 @@
             name="education"
             formControlName="education"
             [value]="'Profissionalizante'"
-            required
           />Profissionalizante<br />
           <input
             type="radio"
@@ -60,28 +67,43 @@
             name="education"
             formControlName="education"
             [value]="'Ensino Superior'"
-            required
           />Ensino superior<br />
         </section>
 
         <button type="submit">Adicionar</button>
+        <button type="button" (click)="clearForm()">Limpar</button>
       </section>
     </form>
 
-    <section id="courseList" class="brightRedSection">
-      <p>Cursos:</p>
-      <table id="courseTable" class="courseTable">
-        <thead>
-          <tr>
-            <th>Curso</th>
-            <th>Carga horária (horas)</th>
-            <th>Instrutor</th>
-            <th>Nível de educação</th>
-            <th>Opções</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+    <section class="darkRedSection">
+      <section class="brightRedSection">
+        <p>Cursos:</p>
+        <table id="courseList" class="courseTable">
+          <thead>
+            <tr>
+              <th>Curso</th>
+              <th>Carga horária (horas)</th>
+              <th>Instrutor</th>
+              <th>Data de início</th>
+              <th>Nível de educação</th>
+              <th>Opções</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let course of courses; index as i">
+            <tr [attr.data-index]="i">
+              <td>{{ course.name }}</td>
+              <td>{{ course.time }}</td>
+              <td>{{ course.instructor }}</td>
+              <td>{{ course.date }}</td>
+              <td>{{ course.education }}</td>
+              <td>
+                <button type="button" (click)="editCourse()">Editar</button
+                ><button type="button" (click)="deleteCourse(i)">Deletar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
     </section>
   </main>
 
