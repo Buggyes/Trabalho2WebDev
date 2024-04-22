@@ -16,13 +16,14 @@
       <button id="darkTheme" class="darkButton" (click)="toggleTheme()">
         Tema escuro
       </button>
+      <!--common buttons-->
     </nav>
   </header>
+  <!--Top App Bar-->
 
   <main>
     <form
       [formGroup]="courseForm"
-      (ngSubmit)="addCourse()"
       class="container"
       id="addCourseForm"
     >
@@ -71,7 +72,7 @@
           />Ensino superior<br />
         </section>
 
-        <button type="submit">Adicionar</button>
+        <button type="button" (click)="addCourse()">Adicionar</button>
         <button type="button" (click)="clearForm()">Limpar</button>
       </section>
     </form>
@@ -80,7 +81,6 @@
       <h2>Editar curso:</h2>
       <form
       [formGroup]="editForm"
-      (ngSubmit)="saveChanges()"
       class="container"
       id="editCourseForm"
     >
@@ -98,9 +98,11 @@
             id="CourseInstructor"
             formControlName="instructor"
           /><br />
+          <!--Text Field-->
 
           <label for="CourseDate">Data de início:</label>
           <input type="date" id="CourseDate" formControlName="date" /><br />
+          <!--Date Picker-->
         </section>
 
         <section id="CourseTeaching" class="brightRedSection">
@@ -127,8 +129,9 @@
             [value]="'Ensino Superior'"
           />Ensino superior<br />
         </section>
+        <!--Radio Button-->
 
-        <button type="submit">Salvar</button>
+        <button type="button" (click)="saveChanges()">Salvar</button>
         <button type="button" (click)="cancelEditing()">Cancelar</button>
       </section>
     </form>
