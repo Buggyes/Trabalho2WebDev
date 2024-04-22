@@ -174,11 +174,26 @@ button#darkTheme {
 /* Estilos para o tema claro */
 .lightTheme header {
     background-color: #f0f0f0;
-    color: #333;
+    color: #222;
+}
+
+.lightTheme td{
+    background-color: #f0f0f0;
+    color: #000;
+}
+
+.lightTheme td button{
+    background-color: #222;
+    color: #f0f0f0;
+}
+
+.lightTheme form button{
+    background-color: #222;
+    color: #f0f0f0;
 }
 
 .lightTheme nav button {
-    color: #333;
+    color: #222;
 }
 
 .lightTheme button#lightTheme {
@@ -195,22 +210,22 @@ button#darkTheme {
 
 .lightTheme .darkRedSection {
     background-color: #ff6666;
-    color: #333;
+    color: #222;
 }
 
 .lightTheme .brightRedSection {
     background-color: #ffcccc;
-    color: #333;
+    color: #222;
 }
 
 .lightTheme footer {
     background-color: #f0f0f0;
-    color: #333;
+    color: #222;
 }
 
 /* Estilos para o tema escuro */
 .darkTheme header {
-    background-color: #333;
+    background-color: #222;
     color: #fff;
 }
 
@@ -241,7 +256,7 @@ button#darkTheme {
 }
 
 .darkTheme footer {
-    background-color: #333;
+    background-color: #222;
     color: #fff;
 }
 
