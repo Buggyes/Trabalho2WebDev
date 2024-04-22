@@ -233,6 +233,16 @@ button#darkTheme {
     color: #fff;
 }
 
+.darkTheme form button{
+    background-color: #f0f0f0;
+    color: #222;
+}
+
+.darkTheme header a{
+    background-color: #f0f0f0;
+    color: #222;
+}
+
 .darkTheme button#lightTheme {
     display: inline-block;
 }
