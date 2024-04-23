@@ -148,6 +148,13 @@ button {
     transition: background-color 0.3s ease;
 }
 
+a:hover,
+button:hover, 
+td button:hover{
+    scale: 110%;
+    transition: 100ms;
+}
+
 a[href="#addCourseForm"],
 a[href="#courseList"],
 a[href="#footer"] {
@@ -180,15 +187,6 @@ button#darkTheme {
 .lightTheme td button{
     background-color: #222;
     color: #f0f0f0;
-}
-
-.lightTheme a:hover,
-.lightTheme button:hover,
-.lightTheme td button:hover {
-    outline-offset: -1px;
-    outline-width: 4px;
-    outline-color: #222;
-    outline-style: solid;
 }
 
 .lightTheme form button{
@@ -245,15 +243,6 @@ button#darkTheme {
 .darkTheme img{
     background-color: #fff;
     border-radius: 50%;
-}
-
-.darkTheme a:hover,
-.darkTheme button:hover, 
-.darkTheme td button:hover{
-    outline-offset: -1px;
-    outline-width: 4px;
-    outline-color: #f0f0f0;
-    outline-style: solid;
 }
 
 .darkTheme header a{
