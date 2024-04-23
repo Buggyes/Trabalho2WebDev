@@ -82,7 +82,7 @@ input[type="number"] {
 }
 
 .brightRedSection {
-    background-color: #f00;
+    background-color: #e66;
     color: #fff;
     padding: 15px;
     margin-bottom: 20px;
@@ -213,7 +213,7 @@ button#darkTheme {
 }
 
 .lightTheme .darkRedSection {
-    background-color: #ff6666;
+    background-color: #ff9999;
     color: #222;
 }
 
@@ -279,7 +279,7 @@ button#darkTheme {
 }
 
 .darkTheme .brightRedSection {
-    background-color: #f00;
+    background-color: #d00;
     color: #fff;
 }
 
