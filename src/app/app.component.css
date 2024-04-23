@@ -186,7 +186,7 @@ button#darkTheme {
 .lightTheme button:hover,
 .lightTheme td button:hover {
     outline-offset: -1px;
-    outline-width: 8px;
+    outline-width: 4px;
     outline-color: #222;
     outline-style: solid;
 }
@@ -251,7 +251,7 @@ button#darkTheme {
 .darkTheme button:hover, 
 .darkTheme td button:hover{
     outline-offset: -1px;
-    outline-width: 8px;
+    outline-width: 4px;
     outline-color: #fff;
     outline-style: solid;
 }
