@@ -1,6 +1,8 @@
 # Unicursos
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
+College project where I had to develop a website using a framework (Angular in my case), while respecting the design shenanigans of material.io
+
+[Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
 
 ## Development server
 
