@@ -83,6 +83,8 @@ export class AppComponent implements OnInit {
   }
 
   editCourse(id:number) {
+    let clearButton = document.getElementById('clearButton');
+    clearButton?.scrollIntoView();
     this.editing = true;
     for (let i = 0; i < this.courses.length; i++) {
       if(id == this.courses[i].id){
