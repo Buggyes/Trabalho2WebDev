@@ -111,14 +111,14 @@ button[type="submit"]:hover {
     background-color: #fff;
     border: 2px solid #111;
     padding: 8px;
-    text-align: left;
+    text-align: center;
     color: #222;
 }
 .courseTable td {
     background-color: #222;
     border: 2px solid #111;
     padding: 8px;
-    text-align: left;
+    text-align: center;
     color: #fff;
 }
 
