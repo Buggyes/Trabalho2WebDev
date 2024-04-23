@@ -252,7 +252,7 @@ button#darkTheme {
 .darkTheme td button:hover{
     outline-offset: -1px;
     outline-width: 4px;
-    outline-color: #fff;
+    outline-color: #f0f0f0;
     outline-style: solid;
 }
 
